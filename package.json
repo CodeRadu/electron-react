@@ -1,0 +1,40 @@
+{
+  "name": "electron-react",
+  "productName": "Electron React",
+  "version": "1.0.0",
+  "description": "Electron app with react",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "cross-env BROWSER=none concurrently -k \"cd lib/react-app && npm start\" \"electron .\"",
+    "build": "npm run build:react && npm run build:electron",
+    "build:react": "cd lib/react-app && npm run build",
+    "build:electron": "electron-builder"
+  },
+  "build": {
+    "appId": "electron-react",
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "installerIcon": "icon.ico",
+      "uninstallerIcon": "icon.ico",
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "keywords": [
+    "React",
+    "Electron"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^7.4.0",
+    "cross-env": "^7.0.3",
+    "electron": "^21.1.0",
+    "electron-builder": "^23.6.0"
+  }
+}
